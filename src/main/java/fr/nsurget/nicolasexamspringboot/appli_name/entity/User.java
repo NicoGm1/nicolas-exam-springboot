@@ -40,7 +40,6 @@ public class User implements SluggerInterface {
     private String password;
 
     @CreationTimestamp
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy/MM/dd", timezone = "468")
     private Date createdAt;
 
     private String slug;
@@ -54,6 +53,6 @@ public class User implements SluggerInterface {
 
     @Override
     public String getField() {
-        return name + "#" + new Random().nextInt(9999);
+        return name + "-" + new Random().nextInt(9999);
     }
 }
