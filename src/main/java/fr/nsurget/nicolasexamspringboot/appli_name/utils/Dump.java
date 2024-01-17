@@ -4,82 +4,23 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.experimental.UtilityClass;
 
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.List;
+import java.util.Optional;
+
 @UtilityClass
 public class Dump {
 
-    private static String getPackagesProject() {
-        String packages = Dump.class.getPackageName();
-        String[] myPackage = packages.split("\\.");
-        return myPackage[0] + "." + myPackage[1] + "." + myPackage[2];
-    }
-
-    public static void test(Object object) {
-        System.out.println("Debug > Dump =)" + dumper(object, 1));
-
-    }
-
-    private static String dumper(Object object, int level) {
-        if (object == null) {
-            return "";
-        }
-        if (object instanceof String) {
-            return (String) object;
-        }
-        Class<?> objectClass = object.getClass();
-        StringBuilder sb = new StringBuilder(objectClass.getSimpleName());
-        sb.append("\n");
-        sb.append("{");
-        sb.append("\n");
-        for (Field field : objectClass.getDeclaredFields()) {
-            try {
-                sb.append("\t");
-                sb.append(field.getName());
-                sb.append(" : ");
-                String upperCaseFieldName = field.getName().substring(0, 1).toUpperCase() + field.getName().substring(1);
-                String name = "get" + upperCaseFieldName;
-                if (field.getType().getSimpleName().equals("boolean")) {
-                    name = field.getName();
-                }
-                Method getter = objectClass.getDeclaredMethod(name);
-                Object o = getter.invoke(object);
-                if (o instanceof List) {
-                    sb.append("[");
-                    sb.append("\n");
-                    for (Object item : (List<?>) o) {
-                        if (!item.getClass().getPackageName().equals(object.getClass().getPackageName())) {
-                            sb.append(dumper(item, ++level));
-                        }
-                    }
-                    sb.append("\n");
-                    sb.append("\t]");
-                    sb.append("\n");
-                } else if (o != null && o.getClass().getPackageName().startsWith(getPackagesProject())) {
-                    if (!o.getClass().getPackageName().equals(object.getClass().getPackageName())) {
-                        sb.append(dumper(o, ++level));
-                    }
-                }
-                sb.append(o);
-                sb.append("\n");
-            } catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
-                System.out.println("Getter not found :(");
-            }
-        }
-        sb.append("}");
-        sb.append("\n");
-        return sb.toString();
-    }
-
-    private void Dumpi(Object object){
+    public static void dump(Object object){
+        System.out.println("Debug > Dump =)");
+        Object jsonObject = object;
         ObjectMapper objectMapper = new ObjectMapper();
+        if (object instanceof Optional<?> && ((Optional<?>) object).isPresent()){
+            jsonObject = ((Optional<?>) object).get();
+        }
         try {
-            System.out.println(objectMapper.writeValueAsString(object));
+            System.out.println(objectMapper.writerWithDefaultPrettyPrinter()
+                    .writeValueAsString(jsonObject));
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
         }
     }
-
 }
