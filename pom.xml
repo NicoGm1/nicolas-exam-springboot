@@ -94,24 +94,29 @@
 			<artifactId>jackson-databind</artifactId>
 			<version>2.15.3</version>
 		</dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-crypto</artifactId>
+            <version>6.1.6</version>
+        </dependency>
 
-		<!-- Dépendances pour la sécurité (communes) -->
-		<!--		<dependency>-->
-		<!--			<groupId>org.springframework.boot</groupId>-->
-		<!--			<artifactId>spring-boot-starter-security</artifactId>-->
-		<!--		</dependency>-->
-		<!--		<dependency>-->
-		<!--			<groupId>org.springframework.security</groupId>-->
-		<!--			<artifactId>spring-security-test</artifactId>-->
-		<!--			<scope>test</scope>-->
-		<!--		</dependency>-->
+        <!-- Dépendances pour la sécurité (communes) -->
+				<dependency>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-security</artifactId>
+				</dependency>
+				<dependency>
+					<groupId>org.springframework.security</groupId>
+					<artifactId>spring-security-test</artifactId>
+					<scope>test</scope>
+				</dependency>
 
 		<!-- Dépendance pour la sécurité WebApp -->
-		<!--		<dependency>-->
-		<!--			<groupId>org.springframework.security</groupId>-->
-		<!--			<artifactId>spring-security-taglibs</artifactId>-->
-		<!--			<version>6.1.2</version>-->
-		<!--		</dependency>-->
+				<dependency>
+					<groupId>org.springframework.security</groupId>
+					<artifactId>spring-security-taglibs</artifactId>
+					<version>6.1.2</version>
+				</dependency>
 
 		<!-- Dépendances pour la sécurité API (Token JWT) -->
 		<!--		<dependency>-->
