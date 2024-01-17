@@ -1,6 +1,6 @@
 package fr.nsurget.nicolasexamspringboot.appli_name.validator.annotation;
 
-import fr.poec.springboot.instant_faking.validator.UniqueEmailValidator;
+import fr.nsurget.nicolasexamspringboot.appli_name.validator.UniqueEmailValidator;
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
 

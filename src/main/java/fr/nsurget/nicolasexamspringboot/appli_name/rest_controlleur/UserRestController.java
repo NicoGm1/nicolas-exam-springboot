@@ -25,7 +25,7 @@ public class UserRestController {
     }
 
     @GetMapping(path = "/{id}")
-    Optional<User> show(@PathVariable Long id) {
+    User show(@PathVariable Long id) {
         return userService.findById(id);
     }
 
