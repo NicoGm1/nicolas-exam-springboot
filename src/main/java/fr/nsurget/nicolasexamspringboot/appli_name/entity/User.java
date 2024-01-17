@@ -7,6 +7,8 @@ import fr.nsurget.nicolasexamspringboot.appli_name.validator.annotation.UniqueEm
 import fr.nsurget.nicolasexamspringboot.appli_name.validator.annotation.UniqueName;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,6 +16,7 @@ import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.util.Date;
+import java.util.Random;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -26,11 +29,11 @@ public class User implements SluggerInterface {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @UniqueName(repositoryClass = UserRepository.class)
+    @NotBlank(message = "Please, give a proper name")
+    @Size(message = "The account name must have at least 5 characters", min = 5)
     private String name;
 
-    @UniqueEmail
-    @Email
+
     private String email;
 
 
@@ -51,6 +54,6 @@ public class User implements SluggerInterface {
 
     @Override
     public String getField() {
-        return name;
+        return name + "#" + new Random().nextInt(9999);
     }
 }
