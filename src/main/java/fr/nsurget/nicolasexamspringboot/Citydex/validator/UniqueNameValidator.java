@@ -1,8 +1,8 @@
 package fr.nsurget.nicolasexamspringboot.Citydex.validator;
 
 
+import fr.nsurget.nicolasexamspringboot.Citydex.repository.EntityNameRepository;
 import fr.nsurget.nicolasexamspringboot.Citydex.validator.annotation.UniqueName;
-import fr.nsurget.nicolasexamspringboot.appli_name.repository.EntityNameRepository;
 import jakarta.persistence.EntityManager;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;

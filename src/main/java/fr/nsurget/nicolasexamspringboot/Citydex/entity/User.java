@@ -23,7 +23,7 @@ public class User implements SluggerInterface {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
 
     @NotBlank(message = "Please, give a proper name")
     @Size(message = "The account name must have at least 5 characters", min = 5)
