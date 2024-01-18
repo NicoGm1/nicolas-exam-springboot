@@ -23,7 +23,7 @@ public class UserRestController {
     }
 
     @GetMapping(path = "/{id}")
-    User show(@PathVariable Long id) {
+    User show(@PathVariable Integer id) {
         return userService.findById(id);
     }
 

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface RegionRepository extends JpaRepository<Region, Long> {
+public interface RegionRepository extends JpaRepository<Region, Integer> {
 
     Optional<Region> findBySlug(String slug);
 }

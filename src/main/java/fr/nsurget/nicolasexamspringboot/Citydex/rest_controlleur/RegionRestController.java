@@ -1,7 +1,10 @@
 package fr.nsurget.nicolasexamspringboot.Citydex.rest_controlleur;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import fr.nsurget.nicolasexamspringboot.Citydex.entity.City;
 import fr.nsurget.nicolasexamspringboot.Citydex.entity.Region;
+import fr.nsurget.nicolasexamspringboot.Citydex.json_views.DepartmentJsonView;
+import fr.nsurget.nicolasexamspringboot.Citydex.json_views.RegionJsonView;
 import fr.nsurget.nicolasexamspringboot.Citydex.mapping.ApiUrlRoute;
 import fr.nsurget.nicolasexamspringboot.Citydex.service.RegionService;
 import lombok.AllArgsConstructor;
@@ -21,12 +24,14 @@ public class RegionRestController {
     private RegionService regionService;
 
     @GetMapping
+    @JsonView(RegionJsonView.RegionFullView.class)
     public List<Region> list() {
         return this.regionService.findAll();
     }
 
 
     @GetMapping(path = "/{slug}")
+    @JsonView(RegionJsonView.RegionFullView.class)
     public Region show(@PathVariable String slug) {
         return regionService.findBySlug(slug);
     }

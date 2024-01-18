@@ -23,7 +23,7 @@ public class UserService implements DAOServiceInterface<User> {
         return userRepository.findAll();
     }
 
-    public User findById(Long id){
+    public User findById(Integer id){
         Optional<User> optionalUser = userRepository.findById(id);
         optionalUser.orElseThrow(() -> new NotFoundException("User", "id", id));
         return optionalUser.get();
