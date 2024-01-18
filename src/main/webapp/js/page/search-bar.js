@@ -1,6 +1,6 @@
 
 function initSearchBar() {
-    const searchBar = document.querySelector("input[data-search-bar-games]");
+    const searchBar = document.querySelector("input[data-search-bar]");
     if (searchBar) {
         const submit = searchBar.nextElementSibling;
         searchBar.addEventListener('keyup', (e) => {
@@ -18,7 +18,7 @@ function initSearchBar() {
 
 function launchSearch(value) {
     if (value.trim()) {
-        location.href = "/game/search/" + value;
+        location.href = "/search/" + value;
     }
 }
 
