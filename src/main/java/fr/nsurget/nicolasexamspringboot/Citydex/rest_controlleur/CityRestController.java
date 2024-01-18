@@ -25,7 +25,7 @@ public class CityRestController {
     private CityService cityService;
 
     @GetMapping(name = "Cities by region", path = ApiUrlRoute.URL_API_REGION + "/{slug}" + "/city")
-    @JsonView(CityJsonView.CityFullView.class)
+    @JsonView(CityJsonView.CityEssentialView.class)
     public List<City> list(@PathVariable String slug) {
         return cityService.findAllByRegionSlug(slug);
     }

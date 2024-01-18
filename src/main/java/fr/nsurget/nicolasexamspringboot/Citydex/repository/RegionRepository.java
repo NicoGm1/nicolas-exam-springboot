@@ -17,13 +17,10 @@ public interface RegionRepository extends JpaRepository<Region, Integer> {
 
     List<Region> findByNameIgnoreCaseContaining(String search);
 
-    @Query("SELECT SUM(c.population) FROM City c WHERE c.department.region.id = :regionId")
-    Long populationByRegionId(@Param("regionId") Integer regionId);
+    @Query("SELECT SUM(c.population) FROM City c WHERE c.department.region.id = :slug")
+    Long populationByRegionSlug(@Param("slug") String slug);
 
     //    Deux écriture possible ? ou @Param
-    @Query ("select r.name from Region r WHERE r.id = ?1")
-    String findNameById(int id);
-
-    @Query("select r.id from Region r where r.slug=?1")
-    int findIdBySlug(String slug);
+    @Query ("select r.name from Region r WHERE r.slug = ?1")
+    String findNameBySlug(String slug);
 }

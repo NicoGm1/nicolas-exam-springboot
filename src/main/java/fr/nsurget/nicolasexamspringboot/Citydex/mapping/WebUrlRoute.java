@@ -1,12 +1,19 @@
 package fr.nsurget.nicolasexamspringboot.Citydex.mapping;
 
-public interface WebUrlRoute {
+import lombok.experimental.FieldDefaults;
 
-    String URL_HOME = "/";
+@FieldDefaults(makeFinal = true)
+public class WebUrlRoute {
+
+    public static final String URL_HOME = "/";
+
+    public static final String URL_REGISTER = "/register";
+
+    public static final String URL_LOGIN = "/login";
+    public static final String URL_LOGOUT = "/logout";
+    public static final String URL_USER = "/user";
+    public static final String URL_ADMIN = "/admin";
 
 
-    String URL_REGISTER = "/register";
 
-    public final static String URL_LOGIN = "/login";
-    public final static String URL_LOGOUT = "/logout";
 }

@@ -44,8 +44,8 @@ public class RegionRestController {
         return regionService.findByName(search);
     }
 
-    @GetMapping(path = "/{id}/population")
-    public ResponsePopulation population(@PathVariable int id) {
-        return regionService.populationByRegionId(id);
+    @GetMapping(path = "/{slug}/population")
+    public ResponsePopulation population(@PathVariable String slug) {
+        return regionService.populationByRegionId(slug);
     }
 }

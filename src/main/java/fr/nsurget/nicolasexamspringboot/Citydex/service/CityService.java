@@ -1,6 +1,7 @@
 package fr.nsurget.nicolasexamspringboot.Citydex.service;
 
 import fr.nsurget.nicolasexamspringboot.Citydex.entity.City;
+import fr.nsurget.nicolasexamspringboot.Citydex.entity.Region;
 import fr.nsurget.nicolasexamspringboot.Citydex.exception.NotFoundException;
 import fr.nsurget.nicolasexamspringboot.Citydex.repository.CityRepository;
 import fr.nsurget.nicolasexamspringboot.Citydex.repository.DepartmentRepository;
@@ -19,13 +20,12 @@ public class CityService {
 
     private CityRepository cityRepository;
 
-    private RegionRepository;
+    private RegionRepository regionRepository;
 
     private Slugger slugger;
 
     public List<City> findAllByRegionSlug(String slug){
-
-        return cityRepository.findCitiesByRegionId();
+        return cityRepository.findCitiesByRegionSlug(slug);
     }
 
     public City findById(int id){

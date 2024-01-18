@@ -19,11 +19,11 @@ public interface DepartmentRepository extends JpaRepository<Department, Integer>
 
     List<Department> findByNameIgnoreCaseContaining(String search);
 
-    @Query("SELECT SUM(c.population) FROM City c WHERE c.department.id = :departmentId")
-    Long populationByDepartmentId(@Param("departmentId") Integer departmentId);
+    @Query("SELECT SUM(c.population) FROM City c WHERE c.department.slug = :departmentSlug")
+    Long populationByDepartmentSlug(@Param("departmentSlug") String slug);
 
 //    Deux écriture possible ? ou @Param
-    @Query ("select d.name from Department d WHERE d.id = ?1")
-    String findNameById(int id);
+    @Query ("select d.name from Department d WHERE d.slug = ?1")
+    String findNameBySlug(String slug);
 
 }

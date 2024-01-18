@@ -39,7 +39,7 @@ public class RegionService implements DAOServiceInterface<Region>{
         return regionRepository.findByNameIgnoreCaseContaining(search);
     }
 
-    public ResponsePopulation populationByRegionId (int id){
-        return new ResponsePopulation(regionRepository.findNameById(id), regionRepository.populationByRegionId(id));
+    public ResponsePopulation populationByRegionId (String slug){
+        return new ResponsePopulation(regionRepository.findNameBySlug(slug), regionRepository.populationByRegionSlug(slug));
     }
 }

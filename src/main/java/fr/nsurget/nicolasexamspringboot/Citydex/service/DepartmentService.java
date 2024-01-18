@@ -40,8 +40,8 @@ public class DepartmentService implements DAOServiceInterface<Department> {
         return departmentRepository.findByNameIgnoreCaseContaining(search);
     }
 
-    public ResponsePopulation populationByDepartmentId (int id){
+    public ResponsePopulation populationByDepartmentId (String slug){
 
-        return new ResponsePopulation(departmentRepository.findNameById(id), departmentRepository.populationByDepartmentId(id));
+        return new ResponsePopulation(departmentRepository.findNameBySlug(slug), departmentRepository.populationByDepartmentSlug(slug));
     }
 }

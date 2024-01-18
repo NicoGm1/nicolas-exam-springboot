@@ -44,9 +44,9 @@ public class DepartmentRestController {
         return departmentService.findByName(search);
     }
 
-    @GetMapping(path = "/{id}/population")
-    public ResponsePopulation population(@PathVariable int id) {
-        return departmentService.populationByDepartmentId(id);
+    @GetMapping(path = "/{slug}/population")
+    public ResponsePopulation population(@PathVariable String slug) {
+        return departmentService.populationByDepartmentId(slug);
     }
 
 }

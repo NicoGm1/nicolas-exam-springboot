@@ -15,10 +15,10 @@ public interface CityRepository extends JpaRepository<City, Integer> {
 
     List<City> findByNameIgnoreCaseContainingOrderByPopulationDesc(String search);
 
-    @Query(value = "SELECT c.population from City c where c.id = ?1")
-    Long populationByCityId (Integer id);
+    @Query(value = "SELECT c.population from City c where c.slug = ?1")
+    Long populationByCityId (String slug);
 
-    @Query(value = "select c from City c where c.department.region = ?1")
-    List<City> findCitiesByRegionId(Integer id);
+    @Query(value = "select c from City c where c.department.region.slug = ?1 ORDER BY c.population DESC")
+    List<City> findCitiesByRegionSlug(String slug);
 
 }

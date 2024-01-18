@@ -1,0 +1,13 @@
+.navbar {
+    height: 11vh;
+}
+
+.logo-navbar{
+    height: 11vh;
+    background-color: #fff3cd;
+}
+
+.search-bar{
+    height: 35%;
+    width: 75%;
+}
