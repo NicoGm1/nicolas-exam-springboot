@@ -15,7 +15,7 @@
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
         <script type="text/javascript" src="${contextPath}/js/main.js"></script>
     </head>
-    <body>
+    <body class="body">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark custom-navbar">
         <div class="row w-100">
             <div class="col-2 d-flex align-items-center">
@@ -38,21 +38,16 @@
                         <a class="nav-link" href="${WebUrlRoute.URL_ADMIN}">Admin Panel</a>
                     </security:authorize>
                 </div>
-                <div class="col-6 text-end">
+                <div class="col-6 row text-end">
                     <security:authorize access="!isAuthenticated()">
-                        <div class="">
                             <a class="nav-link" href="${WebUrlRoute.URL_REGISTER}">Register</a>
-                        </div>
-                        <div class="">
                             <a class="nav-link" href="${WebUrlRoute.URL_LOGIN}">Login</a>
-                        </div>
                     </security:authorize>
                     <security:authorize access="isAuthenticated()">
-                        <div class="">
-                                    <span class="ms-2">
-                                        Mon compte :
-                                        <a class="btn-link" href="${WebUrlRoute.URL_USER}/${userLogged.name}">
-                                            ${userLogged.name};
+                        <div class="mt-3">
+                                    <span >
+                                        <a class="btn btn-link" href="${WebUrlRoute.URL_USER}/${userLogged.name}">
+                                            ${userLogged.name}
                                         </a>
                                     </span>
                         </div>

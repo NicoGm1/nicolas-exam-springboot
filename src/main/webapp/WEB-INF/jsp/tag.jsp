@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="f" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
@@ -20,7 +21,8 @@
     if (ctx != null) {
         UserService userService = ctx.getBean(UserService.class);
         if (request.getUserPrincipal() != null) {
-            request.setAttribute("userLogged", userService.findByName(request.getUserPrincipal().getName()));
+            User user = userService.findByEmail(request.getUserPrincipal().getName());
+            request.setAttribute("userLogged", user);
         }
     }
 %>

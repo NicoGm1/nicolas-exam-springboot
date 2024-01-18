@@ -57,7 +57,7 @@ public class User implements SluggerInterface, UserDetails {
 
     @Override
     public String getUsername() {
-        return name;
+        return email;
     }
 
     @Override

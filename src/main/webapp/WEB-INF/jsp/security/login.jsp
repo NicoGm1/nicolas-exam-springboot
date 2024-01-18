@@ -12,11 +12,11 @@
                     <form method="POST" action="${WebUrlRoute.URL_LOGIN}"
                         class="form-signin p-5 col-lg-6 col-md-8 col-sm-12 mx-auto">
                         <div class="mb-3 row">
-                            <input name="name" type="text" class="form-control" placeholder="Name"
+                            <input name="username" type="text" class="form-control" placeholder="Email (Example: kevin@drosalys.fr)"
                                 autofocus="true" />
                         </div>
                         <div class="mb-3 row">
-                            <input name="password" type="password" class="form-control" placeholder="Password" />
+                            <input name="password" type="password" class="form-control" placeholder="Password (Example: 12345)" />
                         </div>
                         <p class="invalid-feedback">${error}</p>
                         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
@@ -37,9 +37,10 @@
                 </div>
             </div>
         </security:authorize>
-        <security:authorize access="isAuthenticated()">
-            <h1 class="text-center mt-5 mb-1">User Already Login =)</h1>
-        </security:authorize>
+            <security:authorize access="isAuthenticated()">
+                <h1 class="text-center mt-5 mb-1">User Already Login</h1>
+                <h2 class="text-center mt-5 mb-1">Log out =)</h2>
+            </security:authorize>
         </div>
 
 <%@ include file="../footer.jsp" %>

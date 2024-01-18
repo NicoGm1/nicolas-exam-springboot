@@ -1,9 +1,9 @@
 
 * {
-    --bs-body-bg: #969696;
-    --bs-body-color: #fff;
+    --bs-body-bg: #455b7c;
+    --bs-body-color: #ffffff;
     --bs-secondary: #888888;
-    --bs-primary: #003680;
+    --bs-primary: #006eff;
 }
 
 .btn-primary {
@@ -23,10 +23,14 @@
     --bs-btn-disabled-border-color: #2300a0;
 }
 
-h2 {
-    font-size: 1.2em;
-}
-
 .invalid-feedback {
     display: block;
 }
+
+
+ body {
+     background: url('https://images.unsplash.com/photo-1620641838842-b3981afc392e?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') center center no-repeat;
+     background-size: cover;
+ }
+
+

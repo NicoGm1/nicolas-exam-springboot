@@ -20,10 +20,9 @@ public class UserPostDTO {
     @UniqueName(repositoryClass = UserRepository.class)
     private String name;
 
-    @Email(message = "Please, give a valid email")
-    @NotBlank(message = "Please, give an email")
+    @Email
     @UniqueEmail
-    private String email;
+    private String username;
 
     @Size(min = 5)
     private String password;

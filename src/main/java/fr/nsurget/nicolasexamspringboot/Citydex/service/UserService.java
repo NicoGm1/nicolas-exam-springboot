@@ -44,18 +44,16 @@ public class UserService implements DAOServiceInterface<User>, UserDetailsServic
     public User create(UserPostDTO dto){
         User user = new User();
         user.setName(dto.getName());
-        user.setEmail(dto.getEmail().toLowerCase());
         user.setPassword(passwordEncoder.encode(dto.getPassword()));
         return userRepository.saveAndFlush(user);
 
     }
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Optional<User> optionalUser = userRepository.findByEmail(username);
+    public UserDetails loadUserByUsername(String email) {
+        Optional<User> optionalUser = userRepository.findByEmail(email);
         optionalUser.orElseThrow(() -> new UsernameNotFoundException("User not found"));
         User user = optionalUser.get();
-
         return new org.springframework.security.core.userdetails.User(
                 user.getEmail(),
                 user.getPassword(),
@@ -81,9 +79,4 @@ public class UserService implements DAOServiceInterface<User>, UserDetailsServic
         return optionalUser.get();
     }
 
-    public User findByName(String name) {
-        Optional<User> optionalUser = userRepository.findByName(name);
-        optionalUser.orElseThrow(() -> new NotFoundException("User","email",name));
-        return optionalUser.get();
-    }
 }
