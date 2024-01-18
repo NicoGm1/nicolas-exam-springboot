@@ -75,9 +75,15 @@ public class UserService implements DAOServiceInterface<User>, UserDetailsServic
         return authorities;
     }
 
-    public User findByName(String email) {
+    public User findByEmail(String email) {
         Optional<User> optionalUser = userRepository.findByEmail(email);
         optionalUser.orElseThrow(() -> new NotFoundException("User","email",email));
+        return optionalUser.get();
+    }
+
+    public User findByName(String name) {
+        Optional<User> optionalUser = userRepository.findByName(name);
+        optionalUser.orElseThrow(() -> new NotFoundException("User","email",name));
         return optionalUser.get();
     }
 }

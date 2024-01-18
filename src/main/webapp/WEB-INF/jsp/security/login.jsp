@@ -9,10 +9,10 @@
             <div class="form-group ${error != null ? 'has-error' : ''}">
                 <span>${message}</span>
                 <div class=" justify-content-md-center">
-                    <form method="POST" action="${UrlRoute.URL_LOGIN}"
+                    <form method="POST" action="${WebUrlRoute.URL_LOGIN}"
                         class="form-signin p-5 col-lg-6 col-md-8 col-sm-12 mx-auto">
                         <div class="mb-3 row">
-                            <input name="username" type="text" class="form-control" placeholder="Username"
+                            <input name="name" type="text" class="form-control" placeholder="Name"
                                 autofocus="true" />
                         </div>
                         <div class="mb-3 row">
@@ -26,7 +26,7 @@
                             </div>
                             <div class="col-md-8 mt-3 text-md-end">
                                 <h5>
-                                    <a href="${UrlRoute.URL_REGISTER}" class="btn-link">
+                                    <a href="${WebUrlRoute.URL_REGISTER}" class="btn-link">
                                         Create an account
                                     </a>
                                 </h5>
