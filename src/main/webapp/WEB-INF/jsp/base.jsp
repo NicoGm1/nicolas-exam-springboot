@@ -21,9 +21,9 @@
     <div class="row w-100">
         <div class="col-2 d-flex align-items-center">
             <a href="${WebUrlRoute.URL_HOME}"><img class="logo-navbar m-3 pl-3"
-                                                   src="https://kerfit.fr/wp-content/uploads/2019/02/logo-made-in-france.png"
-                                                   alt="1705419562-logo-horizontal.png"
-                                                   title="1705419562-logo-horizontal.png"/></a>
+                                                   src="????"
+                                                   alt="Logo Home"
+                                                   title="Logo Home"/></a>
         </div>
         <div class="col-6 d-flex align-items-center">
             <div class="d-flex search-bar">
