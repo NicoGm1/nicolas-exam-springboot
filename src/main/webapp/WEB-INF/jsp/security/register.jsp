@@ -6,20 +6,20 @@
             <security:authorize access="!isAuthenticated()">
                 <h1 class="text-center mt-5 mb-1">User Register</h1>
                 <div class="justify-content-md-center">
-                    <f:form modelAttribute="userPostDTO" method="post" action="${UrlRoute.URL_REGISTER}"
+                    <f:form modelAttribute="userPostDTO" method="post" action="${WebUrlRoute.URL_REGISTER}"
                         class="form-signin" cssClass="p-5 col-lg-6 col-md-8 col-sm-12 mx-auto">
                         <div class="mb-3 row">
                             <div class="form-group ${status.error ? 'has-error' : ''}">
-                                <f:input type="text" path="username" class="form-control" placeholder="Email"
+                                <f:input type="text" path="name" class="form-control" placeholder="Name"
                                     autofocus="true" />
-                                <f:errors path="username" cssClass="invalid-feedback" />
+                                <f:errors path="name" cssClass="invalid-feedback" />
                             </div>
                         </div>
                         <div class="mb-3 row">
                             <div class="form-group ${status.error ? 'has-error' : ''}">
-                                <f:input type="text" path="name" class="form-control" placeholder="Account name"
+                                <f:input type="text" path="email" class="form-control" placeholder="Email"
                                     autofocus="true" />
-                                <f:errors path="name" cssClass="invalid-feedback" />
+                                <f:errors path="email" cssClass="invalid-feedback" />
                             </div>
                         </div>
                         <div class="mb-3 row">

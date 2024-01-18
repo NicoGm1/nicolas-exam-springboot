@@ -52,12 +52,12 @@
                                     <span class="ms-2">
                                         Mon compte :
                                         <a class="btn-link" href="${WebUrlRoute.URL_USER}/${userLogged.name}">
-                                            ${userLogged.name}&ensp;
+                                            ${userLogged.name};
                                         </a>
                                     </span>
                         </div>
                         <div class="text-end">
-                            <form method="POST" action="${UrlRoute.URL_LOGOUT}" autocomplete="off">
+                            <form method="POST" action="${WebUrlRoute.URL_LOGOUT}" autocomplete="off">
                                 <button class="btn btn-link" type="submit" tabindex="3">Logout</button>
                                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                             </form>

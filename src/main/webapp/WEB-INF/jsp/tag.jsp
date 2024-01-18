@@ -20,7 +20,7 @@
     if (ctx != null) {
         UserService userService = ctx.getBean(UserService.class);
         if (request.getUserPrincipal() != null) {
-            request.setAttribute("userLogged", userService.findBySlug(request.getUserPrincipal().getName()));
+            request.setAttribute("userLogged", userService.findByName(request.getUserPrincipal().getName()));
         }
     }
 %>

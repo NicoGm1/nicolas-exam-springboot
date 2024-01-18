@@ -15,8 +15,6 @@ public class SecurityConfig {
         http
             .authorizeHttpRequests(auth ->
                 auth
-//                    .requestMatchers(HttpMethod.POST, "/review/**").authenticated()
-//                    .requestMatchers(HttpMethod.POST, "/userOwnGames/**").authenticated()
                     .requestMatchers("/admin/**").hasRole("ADMIN")
                     .requestMatchers("/**").permitAll()
             )
