@@ -1,7 +1,9 @@
 package fr.nsurget.nicolasexamspringboot.Citydex.rest_controlleur;
 
 import com.fasterxml.jackson.annotation.JsonView;
+import fr.nsurget.nicolasexamspringboot.Citydex.custom_response.ResponsePopulation;
 import fr.nsurget.nicolasexamspringboot.Citydex.entity.City;
+import fr.nsurget.nicolasexamspringboot.Citydex.entity.Department;
 import fr.nsurget.nicolasexamspringboot.Citydex.entity.Region;
 import fr.nsurget.nicolasexamspringboot.Citydex.json_views.DepartmentJsonView;
 import fr.nsurget.nicolasexamspringboot.Citydex.json_views.RegionJsonView;
@@ -34,5 +36,16 @@ public class RegionRestController {
     @JsonView(RegionJsonView.RegionFullView.class)
     public Region show(@PathVariable String slug) {
         return regionService.findBySlug(slug);
+    }
+
+    @GetMapping(path = "/search/{search}")
+    @JsonView(RegionJsonView.RegionEssentialView.class)
+    public List<Region> search(@PathVariable String search) {
+        return regionService.findByName(search);
+    }
+
+    @GetMapping(path = "/{id}/population")
+    public ResponsePopulation population(@PathVariable int id) {
+        return regionService.populationByRegionId(id);
     }
 }

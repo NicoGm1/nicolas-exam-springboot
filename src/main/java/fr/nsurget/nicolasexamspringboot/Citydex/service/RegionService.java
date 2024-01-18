@@ -1,5 +1,7 @@
 package fr.nsurget.nicolasexamspringboot.Citydex.service;
 
+import fr.nsurget.nicolasexamspringboot.Citydex.custom_response.ResponsePopulation;
+import fr.nsurget.nicolasexamspringboot.Citydex.entity.Department;
 import fr.nsurget.nicolasexamspringboot.Citydex.entity.Region;
 import fr.nsurget.nicolasexamspringboot.Citydex.entity.User;
 import fr.nsurget.nicolasexamspringboot.Citydex.exception.NotFoundException;
@@ -31,5 +33,13 @@ public class RegionService implements DAOServiceInterface<Region>{
         Optional<Region> optionalRegion = regionRepository.findBySlug(slug);
         optionalRegion.orElseThrow(() -> new NotFoundException("Region", "slug", slug));
         return optionalRegion.get();
+    }
+
+    public List<Region> findByName(String search){
+        return regionRepository.findByNameIgnoreCaseContaining(search);
+    }
+
+    public ResponsePopulation populationByRegionId (int id){
+        return new ResponsePopulation(regionRepository.findNameById(id), regionRepository.populationByRegionId(id));
     }
 }

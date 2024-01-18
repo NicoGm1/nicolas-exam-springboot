@@ -16,4 +16,70 @@
         <script type="text/javascript" src="${contextPath}/js/main.js"></script>
     </head>
     <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark custom-navbar">
+        <div class="row w-100">
+            <div class="col-2 d-flex align-items-center">
+                <a href="${UrlRoute.URL_HOME}"><img class="logo-navbar m-3 pl-3" src="https://kerfit.fr/wp-content/uploads/2019/02/logo-made-in-france.png" alt="1705419562-logo-horizontal.png" title="1705419562-logo-horizontal.png"/></a>
+            </div>
+            <div class="col-2 d-flex align-items-center">
+
+            </div>
+            <div class="col-4">
+                <div class="main-container p-2 mt-2">
+                    <div class="d-flex">
+                        <input type="text" class="form-control" placeholder="Région, Ville, ..."
+                               data-search-bar-games>
+                        <a class="my-auto me-3">
+                            <i class="fa fa-magnifying-glass"></i>
+                        </a>
+                    </div>
+                    <div class="search-response-container">
+                    </div>
+                </div>
+            </div>
+            <div class="col-4 row">
+                <div class="col-6 text-center mt-4">
+                    <security:authorize access="hasRole('ROLE_ADMIN')">
+                        <a class="nav-link" href="${UrlRoute.URL_ADMIN}">Admin Panel</a>
+                    </security:authorize>
+                </div>
+                <div class="col-6 mt-2 text-end">
+                    <security:authorize access="!isAuthenticated()">
+                        <div class="">
+                            <a class="nav-link" href="${UrlRoute.URL_REGISTER}">Register</a>
+                        </div>
+                        <div class="">
+                            <a class="nav-link" href="${UrlRoute.URL_LOGIN}">Login</a>
+                        </div>
+                    </security:authorize>
+                    <security:authorize access="isAuthenticated()">
+                        <div class="">
+                                    <span class="ms-2">
+                                        Mon compte :
+                                        <a class="btn-link" href="${UrlRoute.URL_USER}/${userLogged.name}">
+                                            ${userLogged.name}&ensp;&thinsp;
+                                        </a>
+                                    </span>
+                        </div>
+                        <div class="text-end">
+                            <form method="POST" action="${UrlRoute.URL_LOGOUT}" autocomplete="off">
+                                <button class="btn btn-link" type="submit" tabindex="3">Logout</button>
+                                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+                            </form>
+                        </div>
+                    </security:authorize>
+                </div>
+            </div>
+        </div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+
+            </div>
+        </div>
+    </nav>
     <%-- Navbarici : SI NECESSAIRE --%>

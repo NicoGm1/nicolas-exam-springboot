@@ -3,7 +3,9 @@ package fr.nsurget.nicolasexamspringboot.Citydex.service;
 import fr.nsurget.nicolasexamspringboot.Citydex.entity.City;
 import fr.nsurget.nicolasexamspringboot.Citydex.exception.NotFoundException;
 import fr.nsurget.nicolasexamspringboot.Citydex.repository.CityRepository;
-import fr.nsurget.nicolasexamspringboot.Citydex.repository.PostalCodeRepository;
+import fr.nsurget.nicolasexamspringboot.Citydex.repository.DepartmentRepository;
+import fr.nsurget.nicolasexamspringboot.Citydex.repository.RegionRepository;
+import fr.nsurget.nicolasexamspringboot.Citydex.utils.Slugger;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -17,10 +19,13 @@ public class CityService {
 
     private CityRepository cityRepository;
 
-    private PostalCodeRepository postalCodeRepository;
+    private RegionRepository;
+
+    private Slugger slugger;
 
     public List<City> findAllByRegionSlug(String slug){
-        return cityRepository.findCitiesByDepartmentRegionSlug(slug);
+
+        return cityRepository.findCitiesByRegionId();
     }
 
     public City findById(int id){
@@ -29,4 +34,15 @@ public class CityService {
         return optionalCity.get();
     }
 
+    public List<City> findAll(){
+        cityRepository.findAll().forEach(c->
+                c.setSlug(slugger.slugify(c.getName())));
+        cityRepository.flush();
+        return cityRepository.findAll();
+    }
+
+    public List<City> findByName(String cityName){
+
+        return cityRepository.findByNameIgnoreCaseContainingOrderByPopulationDesc(cityName);
+    }
 }
