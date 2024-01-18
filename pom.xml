@@ -12,8 +12,8 @@
 	<artifactId>nicolas-exam-springboot</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
-	<name>ApplyNameApplication</name>
-	<description>Exam Spring Boot POEC Java HB</description>
+	<name>CityDexApplication</name>
+	<description>pre-exam Spring Boot POEC Java HB</description>
 	<properties>
 		<java.version>20</java.version>
 	</properties>
