@@ -1,7 +1,9 @@
 package fr.nsurget.nicolasexamspringboot.Centrafake.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonView;
 import fr.nsurget.nicolasexamspringboot.Centrafake.entity.interfaces.SluggerInterface;
+import fr.nsurget.nicolasexamspringboot.Centrafake.json_views.ModelJsonView;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -26,24 +28,29 @@ public class User implements SluggerInterface, UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-
+    @JsonView(ModelJsonView.ModelEssentialView.class)
+    private Long id;
 
     @CreationTimestamp
+    @JsonView(ModelJsonView.ModelDetailedView.class)
     private Date createdAt;
 
+    @JsonView(ModelJsonView.ModelDetailedView.class)
     private String email;
 
+    @JsonView(ModelJsonView.ModelDetailedView.class)
     private String password;
 
+    @JsonView(ModelJsonView.ModelDetailedView.class)
     private String slug;
 
     private String roles = "[]";
 
+    @JsonView(ModelJsonView.ModelDetailedView.class)
     @OneToMany (mappedBy = "user")
     private List<Listing> listings;
 
-
+    @JsonView(ModelJsonView.ModelDetailedView.class)
     public boolean isAdmin() {
         return roles.contains("[\"ROLE_ADMIN\"]");
     }

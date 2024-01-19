@@ -5,10 +5,8 @@ public class UserJsonView {
     public interface UserEssentialView {
     }
 
-    public interface UserDetailedView extends UserEssentialView {
+    public interface UserDetailedView extends UserEssentialView, ListingJsonView.ListingEssentialView {
     }
 
-    public interface UserFullView extends UserDetailedView {
-    }
 
 }

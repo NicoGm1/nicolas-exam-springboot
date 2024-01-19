@@ -1,5 +1,6 @@
 package fr.nsurget.nicolasexamspringboot.Centrafake.service;
 
+import fr.nsurget.nicolasexamspringboot.Centrafake.dto.UserPutDTO;
 import fr.nsurget.nicolasexamspringboot.Centrafake.entity.User;
 import fr.nsurget.nicolasexamspringboot.Centrafake.dto.UserPostDTO;
 import fr.nsurget.nicolasexamspringboot.Centrafake.exception.NotFoundException;
@@ -30,7 +31,7 @@ public class UserService implements DAOServiceInterface<User>, UserDetailsServic
         return userRepository.findAll();
     }
 
-    public User findById(Integer id){
+    public User findById(Long id){
         Optional<User> optionalUser = userRepository.findById(id);
         optionalUser.orElseThrow(() -> new NotFoundException("User", "id", id));
         return optionalUser.get();
@@ -41,6 +42,7 @@ public class UserService implements DAOServiceInterface<User>, UserDetailsServic
         return null;
     }
 
+
     public User create(UserPostDTO dto){
         User user = new User();
         user.setEmail(dto.getUsername());
@@ -48,6 +50,17 @@ public class UserService implements DAOServiceInterface<User>, UserDetailsServic
         return userRepository.saveAndFlush(user);
 
     }
+
+    public User edit(Long id, UserPutDTO userPutDTO) {
+        Optional<User> optionalUser = userRepository.findById(id);
+        optionalUser.orElseThrow(() -> new NotFoundException("User", "id", id));
+        User user = optionalUser.get();
+        if (!userPutDTO.getPassword().isEmpty()) {
+            user.setPassword(passwordEncoder.encode(userPutDTO.getPassword()));
+        }
+        return userRepository.saveAndFlush(user);
+    }
+
 
     @Override
     public UserDetails loadUserByUsername(String email) {

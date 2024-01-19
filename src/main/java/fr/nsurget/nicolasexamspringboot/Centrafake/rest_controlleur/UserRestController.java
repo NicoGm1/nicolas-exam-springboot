@@ -1,7 +1,10 @@
 package fr.nsurget.nicolasexamspringboot.Centrafake.rest_controlleur;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import fr.nsurget.nicolasexamspringboot.Centrafake.dto.UserPostDTO;
+import fr.nsurget.nicolasexamspringboot.Centrafake.dto.UserPutDTO;
 import fr.nsurget.nicolasexamspringboot.Centrafake.entity.User;
+import fr.nsurget.nicolasexamspringboot.Centrafake.json_views.UserJsonView;
 import fr.nsurget.nicolasexamspringboot.Centrafake.mapping.ApiUrlRoute;
 import fr.nsurget.nicolasexamspringboot.Centrafake.service.UserService;
 import jakarta.validation.Valid;
@@ -19,7 +22,8 @@ public class UserRestController {
 
 
     @GetMapping(path = "/{id}")
-    User show(@PathVariable Integer id) {
+    @JsonView(UserJsonView.UserEssentialView.class)
+    User show(@PathVariable Long id) {
         return userService.findById(id);
     }
 
@@ -28,5 +32,10 @@ public class UserRestController {
         return userService.create(userDTO);
     }
 
+    @PutMapping(path = "/{id}")
+    @JsonView(UserJsonView.UserDetailedView.class)
+    User edit(@Valid @RequestBody UserPutDTO userDTO, @PathVariable Long id) {
+        return userService.edit(id, userDTO);
+    }
 
 }

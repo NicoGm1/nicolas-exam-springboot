@@ -3,7 +3,7 @@
 <%
     Object title = request.getAttribute("title");
     if (title == null) {
-        title = "?!?!?!";
+        title = "Centrafake";
     }
     request.setAttribute("title", title);
 %>

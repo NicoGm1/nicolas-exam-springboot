@@ -8,4 +8,6 @@ public interface DAOServiceInterface<T> {
 
     T findBySlug(String slug);
 
+    T findById(Long id);
+
 }
