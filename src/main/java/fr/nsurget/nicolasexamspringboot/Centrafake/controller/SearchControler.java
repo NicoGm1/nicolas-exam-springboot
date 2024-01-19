@@ -10,19 +10,13 @@ import org.springframework.web.servlet.ModelAndView;
 @AllArgsConstructor
 public class SearchControler {
 
-    RegionRepository regionRepository;
 
-    DepartmentRepository departmentRepository;
-
-    CityRepository cityRepository;
 
     @GetMapping(WebUrlRoute.URL_SEARCH + "/{searched}")
     public ModelAndView showSitemap(ModelAndView mav, @PathVariable String searched) {
         mav.setViewName("search/search");
         mav.addObject("search", searched);
-        mav.addObject("region", regionRepository.findByNameIgnoreCaseContaining(searched));
-        mav.addObject("department", departmentRepository.findByNameIgnoreCaseContaining(searched));
-        mav.addObject("city", cityRepository.findByNameIgnoreCaseContainingOrderByPopulationDesc(searched));
+
         return mav;
     }
 

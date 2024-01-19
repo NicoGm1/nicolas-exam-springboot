@@ -9,10 +9,13 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
+import java.util.Date;
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -25,9 +28,9 @@ public class User implements SluggerInterface, UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @NotBlank(message = "Please, give a proper name")
-    @Size(message = "The account name must have at least 5 characters", min = 5)
-    private String name;
+
+    @CreationTimestamp
+    private Date createdAt;
 
     private String email;
 
@@ -37,6 +40,9 @@ public class User implements SluggerInterface, UserDetails {
 
     private String roles = "[]";
 
+    @OneToMany (mappedBy = "user")
+    private List<Listing> listings;
+
 
     public boolean isAdmin() {
         return roles.contains("[\"ROLE_ADMIN\"]");
@@ -44,7 +50,7 @@ public class User implements SluggerInterface, UserDetails {
 
 
     public String getField() {
-        return name + "-" + id;
+        return "user-" + id;
     }
 
     @Override

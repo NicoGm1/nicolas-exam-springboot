@@ -17,10 +17,6 @@ public class UserRestController {
 
     private UserService userService;
 
-    @GetMapping
-    public List<User> list() {
-        return this.userService.findAll();
-    }
 
     @GetMapping(path = "/{id}")
     User show(@PathVariable Integer id) {

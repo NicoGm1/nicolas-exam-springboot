@@ -2,8 +2,8 @@ package fr.nsurget.nicolasexamspringboot.Centrafake.repository;
 
 import java.util.Optional;
 
-public interface EntityNameRepository<T> {
+public interface EntitySlugRepository<T> {
 
-    Optional<T> findByName(String name);
+    Optional<T> findBySlug(String slug);
 
 }

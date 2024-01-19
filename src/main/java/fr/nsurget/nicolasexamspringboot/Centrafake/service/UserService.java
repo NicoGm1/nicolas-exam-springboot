@@ -43,7 +43,7 @@ public class UserService implements DAOServiceInterface<User>, UserDetailsServic
 
     public User create(UserPostDTO dto){
         User user = new User();
-        user.setName(dto.getName());
+        user.setEmail(dto.getUsername());
         user.setPassword(passwordEncoder.encode(dto.getPassword()));
         return userRepository.saveAndFlush(user);
 

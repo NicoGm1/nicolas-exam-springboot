@@ -2,7 +2,7 @@ package fr.nsurget.nicolasexamspringboot.Centrafake.validator.annotation;
 
 
 
-import fr.nsurget.nicolasexamspringboot.Centrafake.repository.EntityNameRepository;
+import fr.nsurget.nicolasexamspringboot.Centrafake.repository.EntitySlugRepository;
 import fr.nsurget.nicolasexamspringboot.Centrafake.validator.UniqueNameValidator;
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
@@ -17,7 +17,7 @@ import java.lang.annotation.Target;
 @Target(ElementType.FIELD)
 public @interface UniqueName {
 
-    Class<? extends EntityNameRepository<?>> repositoryClass();
+    Class<? extends EntitySlugRepository<?>> repositoryClass();
 
     String message() default "This name already exists !";
 

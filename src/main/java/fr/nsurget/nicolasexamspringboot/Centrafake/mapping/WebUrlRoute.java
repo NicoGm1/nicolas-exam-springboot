@@ -16,12 +16,12 @@ public class WebUrlRoute {
     public static final String URL_LOGIN = "/login";
     public static final String URL_LOGOUT = "/logout";
     public static final String URL_USER = "/user";
-    public static final String URL_ADMIN = "/admin";
+
+//    public static final String URL_ADMIN = "/admin";
     public static final String URL_ERROR = "/error";
     public static final String URL_SITEMAP = "/sitmap";
     public static final String URL_SEARCH = "/search";
 
-//    public static final String URL_SEARCH = "/search";
 
 
     public String[] getSiteMapLinks() {
