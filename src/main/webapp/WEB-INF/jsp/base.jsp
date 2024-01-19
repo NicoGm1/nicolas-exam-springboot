@@ -21,7 +21,7 @@
     <div class="row w-100">
         <div class="col-2 d-flex align-items-center">
             <a href="${WebUrlRoute.URL_HOME}"><img class="logo-navbar m-3 pl-3"
-                                                   src="????"
+                                                   src="https://d9m1iyeq935g9.cloudfront.net/logo-lacentrale-cmjn1696229824-realisation-fancybox.jpeg?width=auto"
                                                    alt="Logo Home"
                                                    title="Logo Home"/></a>
         </div>

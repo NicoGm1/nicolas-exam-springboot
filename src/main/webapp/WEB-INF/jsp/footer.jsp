@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
-<%@ page import="fr.nsurget.nicolasexamspringboot.Citydex.mapping.WebUrlRoute" %>
+<%@ page import="fr.nsurget.nicolasexamspringboot.Centrafake.mapping.WebUrlRoute" %>
     </body>
     <div class="top-footer">
     </div>
