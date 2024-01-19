@@ -77,4 +77,8 @@ public class ListingService {
         listing.setPrice(dto.getPrice());
         return getUserAndModelListing(listing, dto.getUser_id(), dto.getModel_id(), dto);
     }
+
+    public List<Listing> lastReleased() {
+        return listingRepository.findTop12ByOrderByCreatedAtDesc();
+    }
 }

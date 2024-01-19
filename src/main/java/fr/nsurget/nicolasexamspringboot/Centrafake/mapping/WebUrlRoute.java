@@ -22,6 +22,9 @@ public class WebUrlRoute {
     public static final String URL_SITEMAP = "/sitmap";
     public static final String URL_SEARCH = "/search";
 
+    public static final String URL_BRAND = "/brand";
+    public static final String URL_MODEL = "/model";
+    public static final String URL_LISTING = "/listing";
 
 
     public String[] getSiteMapLinks() {

@@ -2,9 +2,10 @@
 <%@ include file="../tag.jsp" %>
 <jsp:include flush="true" page="../base.jsp"/>
 
-        <div class="container">
+        <div class="container main">
+
             <security:authorize access="!isAuthenticated()">
-            <h1 class="text-center mt-5 mb-1">User Login</h1>
+            <h1 class="text-center mt-5 mb-1 main-title">User Login</h1>
 
             <div class="form-group ${error != null ? 'has-error' : ''}">
                 <span>${message}</span>

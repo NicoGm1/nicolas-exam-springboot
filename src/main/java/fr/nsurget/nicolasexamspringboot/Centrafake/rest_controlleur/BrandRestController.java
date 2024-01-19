@@ -5,6 +5,7 @@ import fr.nsurget.nicolasexamspringboot.Centrafake.dto.BrandDTO;
 import fr.nsurget.nicolasexamspringboot.Centrafake.entity.Brand;
 import fr.nsurget.nicolasexamspringboot.Centrafake.entity.Listing;
 import fr.nsurget.nicolasexamspringboot.Centrafake.json_views.BrandJsonView;
+import fr.nsurget.nicolasexamspringboot.Centrafake.json_views.ListingJsonView;
 import fr.nsurget.nicolasexamspringboot.Centrafake.json_views.ModelJsonView;
 import fr.nsurget.nicolasexamspringboot.Centrafake.mapping.ApiUrlRoute;
 import fr.nsurget.nicolasexamspringboot.Centrafake.service.BrandService;
@@ -38,13 +39,15 @@ public class BrandRestController {
     }
 
     @PostMapping
-    @Validated(ValidationGroup.OnPostItem.class)
+    @JsonView(ListingJsonView.ListingDetailedView.class)
+    //    @Validated(ValidationGroup.OnPostItem.class)  // à faire
     public Brand persist(@Valid @RequestBody BrandDTO dto) {
         return brandService.persist(dto, null);
     }
 
     @PutMapping("/{id}")
-    @Validated(ValidationGroup.OnPutItem.class)
+    @JsonView(ListingJsonView.ListingDetailedView.class)
+    //    @Validated(ValidationGroup.OnPutItem.class) // à faire
     public Brand persist(@Valid @RequestBody BrandDTO dto, @PathVariable Long id) {
         return brandService.persist(dto, id);
     }

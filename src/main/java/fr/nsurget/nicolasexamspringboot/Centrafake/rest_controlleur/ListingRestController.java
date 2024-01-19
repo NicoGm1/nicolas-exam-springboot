@@ -35,13 +35,15 @@ public class ListingRestController {
     }
 
     @PostMapping
-    @Validated(ValidationGroup.OnPostItem.class)
+    @JsonView(ListingJsonView.ListingDetailedView.class)
+    //    @Validated(ValidationGroup.OnPostItem.class)  // à faire
     public Listing persist(@Valid @RequestBody ListingPostDTO dto) {
         return listingService.create(dto);
     }
 
     @PutMapping("/{id}")
-    @Validated(ValidationGroup.OnPutItem.class)
+    @JsonView(ListingJsonView.ListingDetailedView.class)
+    //    @Validated(ValidationGroup.OnPutItem.class) // à faire
     public Listing persist(@Valid @RequestBody ListingPutDTO dto, @PathVariable Long id) {
         return listingService.persist(dto, id);
     }

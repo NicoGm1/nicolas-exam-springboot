@@ -1,6 +1,7 @@
 package fr.nsurget.nicolasexamspringboot.Centrafake.configuration;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.web.SecurityFilterChain;
@@ -15,8 +16,11 @@ public class SecurityConfig {
         http
             .authorizeHttpRequests(auth ->
                 auth
-                    .requestMatchers("/admin/**").hasRole("ADMIN")
-                    .requestMatchers("/**").permitAll()
+//                    .requestMatchers("/admin/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.POST, "/**").permitAll()
+                        .requestMatchers(HttpMethod.PUT, "/**").permitAll()
+                        .requestMatchers("/**").permitAll()
+
             )
             .formLogin(formLogin ->
                 formLogin

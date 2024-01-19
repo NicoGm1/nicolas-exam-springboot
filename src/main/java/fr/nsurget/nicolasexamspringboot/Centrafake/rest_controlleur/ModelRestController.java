@@ -5,6 +5,7 @@ import fr.nsurget.nicolasexamspringboot.Centrafake.dto.ModelDTO;
 import fr.nsurget.nicolasexamspringboot.Centrafake.entity.Listing;
 import fr.nsurget.nicolasexamspringboot.Centrafake.entity.Model;
 import fr.nsurget.nicolasexamspringboot.Centrafake.entity.User;
+import fr.nsurget.nicolasexamspringboot.Centrafake.json_views.ListingJsonView;
 import fr.nsurget.nicolasexamspringboot.Centrafake.json_views.ModelJsonView;
 import fr.nsurget.nicolasexamspringboot.Centrafake.mapping.ApiUrlRoute;
 import fr.nsurget.nicolasexamspringboot.Centrafake.service.ModelService;
@@ -37,13 +38,15 @@ public class ModelRestController {
     }
 
     @PostMapping
-    @Validated(ValidationGroup.OnPostItem.class)
+    @JsonView(ListingJsonView.ListingDetailedView.class)
+//    @Validated(ValidationGroup.OnPostItem.class)  // à faire
     public Model persist(@Valid @RequestBody ModelDTO dto) {
         return modelService.persist(dto, null);
     }
 
     @PutMapping("/{id}")
-    @Validated(ValidationGroup.OnPutItem.class)
+    @JsonView(ListingJsonView.ListingDetailedView.class)
+//    @Validated(ValidationGroup.OnPutItem.class) // à faire
     public Model persist(@Valid @RequestBody ModelDTO dto, @PathVariable Long id) {
         return modelService.persist(dto, id);
     }

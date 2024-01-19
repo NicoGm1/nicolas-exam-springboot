@@ -22,18 +22,21 @@ public class UserRestController {
 
 
     @GetMapping(path = "/{id}")
-    @JsonView(UserJsonView.UserEssentialView.class)
+    @JsonView(UserJsonView.UserDetailedView.class)
     User show(@PathVariable Long id) {
         return userService.findById(id);
     }
 
     @PostMapping
+    @JsonView(UserJsonView.UserDetailedView.class)
+        //    @Validated(ValidationGroup.OnPostItem.class)  // à faire
     User create(@Valid @RequestBody UserPostDTO userDTO) {
         return userService.create(userDTO);
     }
 
     @PutMapping(path = "/{id}")
     @JsonView(UserJsonView.UserDetailedView.class)
+        //    @Validated(ValidationGroup.OnPutItem.class) // à faire
     User edit(@Valid @RequestBody UserPutDTO userDTO, @PathVariable Long id) {
         return userService.edit(id, userDTO);
     }

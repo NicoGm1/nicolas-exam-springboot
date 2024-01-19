@@ -17,10 +17,9 @@ import lombok.Setter;
 @AllArgsConstructor
 public class UserPostDTO {
 
-
     @Email
     @UniqueEmail
-    private String username;
+    private String email;
 
     @Size(message = "The account password must have at least 5 characters", min = 5)
     private String password;
